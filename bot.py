@@ -40,10 +40,10 @@ def get_data(guild):
 # =========================
 YTDL_OPTIONS = {
     'format': 'bestaudio/best',
-    'noplaylist': True,
     'quiet': True,
+    'noplaylist': True,
     'js_runtimes': {
-        'node': {}   # minimal harus dict kosong
+        'node': {}
     }
 }
 
@@ -244,6 +244,7 @@ async def on_ready():
     print("PRO MUSIC BOT ONLINE")
 
 bot.run(TOKEN)
+
 
 
 
