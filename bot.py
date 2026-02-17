@@ -42,9 +42,14 @@ YTDL_OPTIONS = {
     "format": "bestaudio/best",
     "quiet": True,
     "default_search": "ytsearch",
-    "cookiefile": "cookies.txt",   # <<< WAJIB ADA FILE INI
+    "cookiefile": "cookies.txt",
     "noplaylist": True,
     "ignoreerrors": True,
+    "extractor_args": {
+        "youtube": {
+            "player_client": ["android", "web"]
+        }
+    }
 }
 
 ytdl = yt_dlp.YoutubeDL(YTDL_OPTIONS)
@@ -244,3 +249,4 @@ async def on_ready():
     print("PRO MUSIC BOT ONLINE")
 
 bot.run(TOKEN)
+
