@@ -39,20 +39,11 @@ def get_data(guild):
 # YTDLP CONFIG (UPDATED)
 # =========================
 YTDL_OPTIONS = {
-    "format": "bestaudio/best",
-    "quiet": True,
-    "default_search": "ytsearch",
-    "cookiefile": "cookies.txt",
-    "noplaylist": True,
-
-    # 🔥 WAJIB supaya decrypt YouTube JS
-    "js_runtimes": ["node"],
-
-    # 🔥 jangan pakai android kalau pakai cookies
-    "extractor_args": {
-        "youtube": {
-            "player_client": ["web"]
-        }
+    'format': 'bestaudio/best',
+    'noplaylist': True,
+    'quiet': True,
+    'js_runtimes': {
+        'node': {}   # minimal harus dict kosong
     }
 }
 
@@ -253,5 +244,6 @@ async def on_ready():
     print("PRO MUSIC BOT ONLINE")
 
 bot.run(TOKEN)
+
 
 
