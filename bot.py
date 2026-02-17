@@ -44,10 +44,14 @@ YTDL_OPTIONS = {
     "default_search": "ytsearch",
     "cookiefile": "cookies.txt",
     "noplaylist": True,
-    "ignoreerrors": True,
+
+    # 🔥 WAJIB supaya decrypt YouTube JS
+    "js_runtimes": ["node"],
+
+    # 🔥 jangan pakai android kalau pakai cookies
     "extractor_args": {
         "youtube": {
-            "player_client": ["android", "web"]
+            "player_client": ["web"]
         }
     }
 }
@@ -249,4 +253,5 @@ async def on_ready():
     print("PRO MUSIC BOT ONLINE")
 
 bot.run(TOKEN)
+
 
