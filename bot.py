@@ -36,13 +36,18 @@ def get_data(guild):
     return music[guild.id]
 
 # =========================
-# YTDLP CONFIG
+# YTDLP CONFIG (UPDATED)
 # =========================
-ytdl = yt_dlp.YoutubeDL({
+YTDL_OPTIONS = {
     "format": "bestaudio/best",
     "quiet": True,
-    "default_search": "ytsearch"
-})
+    "default_search": "ytsearch",
+    "cookiefile": "cookies.txt",   # <<< WAJIB ADA FILE INI
+    "noplaylist": True,
+    "ignoreerrors": True,
+}
+
+ytdl = yt_dlp.YoutubeDL(YTDL_OPTIONS)
 
 FFMPEG_OPTIONS = {
     "options": "-vn"
@@ -75,6 +80,10 @@ async def play_next(ctx):
             None, lambda: ytdl.extract_info(url, download=False)
         )
 
+        if info is None:
+            await ctx.send("Gagal ambil data video")
+            return
+
         if "entries" in info:
             info = info["entries"][0]
 
@@ -94,8 +103,8 @@ async def play_next(ctx):
         await ctx.send(f"🎵 Now playing: **{title}**")
 
     except Exception as e:
+        print("PLAY ERROR:", e)
         await ctx.send("Error play lagu")
-        print(e)
         await play_next(ctx)
 
 # =========================
